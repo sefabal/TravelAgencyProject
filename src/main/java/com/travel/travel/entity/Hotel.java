@@ -1,7 +1,11 @@
 package com.travel.travel.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
-import java.time.LocalTime;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Entity
 public class Hotel extends BaseEntity {
@@ -12,7 +16,9 @@ public class Hotel extends BaseEntity {
     private String phoneNumber;
     private int numberOfRooms;
     private int ratingScore;
-    private LocalTime avaliableTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime avaliableTime;
 
 
     public String getName() {
@@ -63,11 +69,11 @@ public class Hotel extends BaseEntity {
         this.ratingScore = ratingScore;
     }
 
-    public LocalTime getAvaliableTime() {
+    public LocalDateTime getAvaliableTime() {
         return avaliableTime;
     }
 
-    public void setAvaliableTime(LocalTime avaliableTime) {
+    public void setAvaliableTime(LocalDateTime avaliableTime) {
         this.avaliableTime = avaliableTime;
     }
 }

@@ -1,18 +1,20 @@
 package com.travel.travel.services;
 
-import com.travel.travel.config.Constants;
-import com.travel.travel.entity.Customer;
 import com.travel.travel.entity.Hotel;
 import com.travel.travel.repository.HotelRepo;
 import com.travel.travel.viewmodel.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 @Service
 public class HotelServices {
@@ -39,8 +41,8 @@ public class HotelServices {
         hotel.setNumberOfRooms(hotelDto.getNumberOfRooms());
         hotel.setManagerId(hotelDto.getManagerId());
 
-        LocalTime available = LocalTime.parse(hotelDto.getAvailableTime());
-        hotel.setAvaliableTime(available);
+        hotel.setAvaliableTime(hotelDto.getAvailableTime());
+
 
         return hotelRepo.save(hotel);
 
