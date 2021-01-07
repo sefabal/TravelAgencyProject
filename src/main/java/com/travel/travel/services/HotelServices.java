@@ -6,33 +6,28 @@ import com.travel.travel.viewmodel.HotelDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDateTime;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
 @Service
 public class HotelServices {
 
-    @Autowired
     private HotelRepo hotelRepo;
 
-    public List<HotelDto> getAllHotels() {
+    @Autowired
+    public HotelServices(HotelRepo hotelRepo){
+        this.hotelRepo = hotelRepo;
+    }
 
+    public List<HotelDto> getAllHotels() {
         return hotelRepo.findAll()
                 .stream()
                 .map(HotelDto::new)
                 .collect(Collectors.toList());
-
     }
 
     public Hotel saveHotel(HotelDto hotelDto) {
-
         Hotel hotel = new Hotel();
         hotel.setName(hotelDto.getName());
         hotel.setRatingScore(hotelDto.getRatingScore());
@@ -40,14 +35,9 @@ public class HotelServices {
         hotel.setLocation(hotelDto.getLocation());
         hotel.setNumberOfRooms(hotelDto.getNumberOfRooms());
         hotel.setManagerId(hotelDto.getManagerId());
-
         hotel.setAvaliableTime(hotelDto.getAvailableTime());
-
-
         return hotelRepo.save(hotel);
-
     }
-
 
     public Optional<Hotel> findById(long id) {
         return hotelRepo.findById(id);

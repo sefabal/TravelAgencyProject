@@ -5,23 +5,23 @@ import com.travel.travel.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.ServiceMode;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CustomerService {
 
-    @Autowired
     CustomerRepository customerRepository;
 
-    public Iterable<Customer> getAllCustomers() {
+    @Autowired
+    public CustomerService(CustomerRepository customerRepository){
+        this.customerRepository = customerRepository;
+    }
 
+    public Iterable<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
     public void saveCustomer(Customer customer) {
-
         customerRepository.save(customer);
     }
 
