@@ -64,12 +64,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-bom</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>5.2.10.RELEASE</version>
         </dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-bom</artifactId>
-			<version>5.0.3.RELEASE</version>
+			<version>5.2.10.RELEASE</version>
 		</dependency>
 	</dependencies>
 
